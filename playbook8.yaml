@@ -1,0 +1,16 @@
+---
+- name: copying the file
+  hosts: all
+  tasks:
+    - name: installing multiple packages
+      apt: 
+        name: "{{ item }}"
+        state: latest
+      with_items:
+          - default-jdk
+          - git
+          - tree
+
+    - name: updating the system
+       apt: 
+         update_cache: true
